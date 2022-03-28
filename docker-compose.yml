@@ -11,5 +11,5 @@ services:
     # but take into consideration that it will change the way
     # you are connecting to your database.
     ports:
-      - 5222:5222
+      - 5222:8000
 
