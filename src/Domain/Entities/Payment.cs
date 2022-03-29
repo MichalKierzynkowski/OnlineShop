@@ -12,5 +12,9 @@ namespace Domain.Entities
         public Guid CustomerId { get; set; }
         public DateTime PaymentDate { get; set; }
 
+        protected Payment()
+        {
+
+        }
     }
 }

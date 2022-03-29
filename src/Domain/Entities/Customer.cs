@@ -9,8 +9,12 @@ namespace Domain.Entities
     public class Customer
     {
         public Guid Id { get; set; }
+        public Guid CustomerDetailId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        
+        protected Customer()
+        {
+
+        }
     }
 }

@@ -12,5 +12,9 @@ namespace Domain.Entities
         public Guid CategoryId { get; set; }
         public string Name { get; set; }
 
+        protected Product()
+        {
+
+        }
     }
 }

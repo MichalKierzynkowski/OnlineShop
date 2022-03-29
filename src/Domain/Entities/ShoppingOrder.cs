@@ -12,5 +12,9 @@ namespace Domain.Entities
         public Guid CustomerId { get; set; }
         public DateTime OrderDate { get; set; }
 
+        protected ShopingOrderd()
+        {
+
+        }
     }
 }

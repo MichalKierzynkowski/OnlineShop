@@ -13,6 +13,9 @@ namespace Domain.Entities
         public Guid OrderId { get; set; }
         public Guid  ProductId { get; set; }
         public Guid PaymentId { get; set; }
+        protected TransactionReport()
+        {
 
+        }
     }
 }

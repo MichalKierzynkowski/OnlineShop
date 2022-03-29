@@ -11,6 +11,9 @@ namespace Domain.Entities
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }
         public decimal ProductSellingPrice { get; set; }
-        
+        protected ProductDetail()
+        {
+
+        }
     }
 }
