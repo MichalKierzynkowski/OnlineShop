@@ -16,5 +16,11 @@ namespace Domain.Entities
         {
 
         }
+
+        public Product(string name)
+        {
+            Name=name;
+        }
+
     }
 }

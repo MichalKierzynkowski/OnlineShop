@@ -10,10 +10,15 @@ namespace Domain.Entities
     {
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }
-        public decimal ProductSellingPrice { get; set; }
+        public decimal SellingPrice { get; set; }
         protected ProductDetail()
         {
 
+        }
+
+        public ProductDetail(decimal sellingPrice)
+        {
+            SellingPrice=sellingPrice;
         }
     }
 }

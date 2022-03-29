@@ -13,12 +13,19 @@ namespace Domain.Entities
         public string Street { get; set; }
         public int StreetNumber { get; set; }
         public string PostalCode { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+      
 
         protected CustomerDetail()
         {
 
+        }
+
+        public CustomerDetail(string homeTown, string street, int streetNumber, string postalCode)
+        {
+            HomeTown=homeTown;
+            Street=street;
+            StreetNumber = streetNumber;
+            PostalCode=postalCode;
         }
     }
 }
