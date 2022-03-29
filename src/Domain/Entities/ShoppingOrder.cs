@@ -8,6 +8,9 @@ namespace Domain.Entities
 {
     public class ShoppingOrder
     {
+        public Guid Id { get; set; }
+        public Guid CustomerId { get; set; }
+        public DateTime OrderDate { get; set; }
 
     }
 }

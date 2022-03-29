@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Seller
+    public class ProductDetail
     {
         public Guid Id { get; set; }
-        public Guid ProductId  { get; set; }
-        public string Name { get; set; }
+        public Guid ProductId { get; set; }
+        public decimal ProductSellingPrice { get; set; }
+        
     }
 }
