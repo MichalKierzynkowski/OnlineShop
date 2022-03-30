@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         IQueryable<Product> GetAll();
         Product GetById(Guid id);
