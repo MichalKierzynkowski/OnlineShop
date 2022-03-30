@@ -9,10 +9,10 @@ namespace Application.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetAllCategory();
-        Product GetCategoryById(int id);
-        Product AddNewCategory(Product newProduct);
-        void UpdateCategory(int id, Product product);
-        void DeleteCategory(int id);
+        IEnumerable<Product> GetAllProducts();
+        Product GetProductById(Guid id);
+        Product AddNewProduct(Product newProduct);
+        void UpdateProduct(Guid id, Product product);
+        void DeleteProduct(Guid id);
     }
 }

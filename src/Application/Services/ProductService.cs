@@ -14,32 +14,34 @@ namespace Application.Services
     {
         private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
-        public ProductService(IProductRepository repository)
+        public ProductService(IProductRepository repository,IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
 
         }
-        public Product AddNewCategory(Product newProduct)
+        public IEnumerable<Product> GetAllProducts()
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCategory(int id)
+        public Product GetProductById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+        public Product AddNewProduct(Product newProduct)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Product> GetAllCategory()
+        public void DeleteProduct(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Product GetCategoryById(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public void UpdateCategory(int id, Product product)
+        public void UpdateProduct(Guid id, Product product)
         {
             throw new NotImplementedException();
         }
