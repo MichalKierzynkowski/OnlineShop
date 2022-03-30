@@ -10,7 +10,8 @@ namespace Domain.Entities
     {
         public Guid Id { get; set; } 
         public string Name { get; set; }
-        public ProductDetail ProductDetail { get; set; }
+        public  ProductDetail ProductDetail { get; set; }
+        public Category Category { get; set; }
         protected Product()
         {
 
