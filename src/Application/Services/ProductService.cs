@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dto
+namespace Application.Services
 {
-    public class CreateProductDto
+    public class ProductService
     {
 
     }
