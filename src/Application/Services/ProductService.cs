@@ -32,11 +32,16 @@ namespace Application.Services
             var product = _repository.GetById(id);
             return _mapper.Map<GetProductDto>(product);
         }
-        public Product AddNewProduct(Product newProduct)
+        public CreateProductDto AddNewProduct(Product newProduct)
+        {
+            var product = _mapper.Map<Product>(newProduct);
+            _repository.Add(product);
+            return _mapper.Map<CreateProductDto>(product);
+        }
+        public void UpdateProduct(Guid id, Product product)
         {
             throw new NotImplementedException();
         }
-
         public void DeleteProduct(Guid id)
         {
             throw new NotImplementedException();
@@ -44,9 +49,6 @@ namespace Application.Services
 
        
 
-        public void UpdateProduct(Guid id, Product product)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
