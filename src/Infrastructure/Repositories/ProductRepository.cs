@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories
 
         public Product GetById(Guid id)
         {
-            int a = 5
+            int a = 5;
            return _context.Products.SingleOrDefault(p => p.Id == id);
         }
 
