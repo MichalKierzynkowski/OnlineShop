@@ -11,7 +11,7 @@ namespace Domain.Entities
         public Guid Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-
+        public Customer Customer { get; set; }
         protected User()
         {
             

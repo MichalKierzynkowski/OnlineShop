@@ -13,7 +13,7 @@ namespace Domain.Entities
         public string Street { get; set; }
         public int StreetNumber { get; set; }
         public string PostalCode { get; set; }
-      
+        public ICollection<Customer> Customers { get; set; }  
 
         protected CustomerDetail()
         {
