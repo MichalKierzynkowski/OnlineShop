@@ -32,7 +32,7 @@ namespace Application.Services
             var product = _repository.GetById(id);
             return _mapper.Map<GetProductDto>(product);
         }
-        public CreateProductDto AddNewProduct(Product newProduct)
+        public CreateProductDto AddNewProduct(CreateProductDto newProduct)
         {
             var product = _mapper.Map<Product>(newProduct);
             _repository.Add(product);

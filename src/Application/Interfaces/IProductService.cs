@@ -12,7 +12,7 @@ namespace Application.Interfaces
     {
         IEnumerable<GetProductDto> GetAllProducts();
         GetProductDto GetProductById(Guid id);
-        CreateProductDto AddNewProduct(Product newProduct);
+        CreateProductDto AddNewProduct(CreateProductDto newProduct);
         void UpdateProduct(Guid id, Product product);
         void DeleteProduct(Guid id);
     }
