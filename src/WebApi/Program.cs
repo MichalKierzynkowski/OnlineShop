@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Application.Services;
+using Application.Mappings;
 using Infrastructure;
 using Microsoft.OpenApi.Models;
 
@@ -15,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterTestInfrastructure();
 
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.RegisterAutomapper();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
