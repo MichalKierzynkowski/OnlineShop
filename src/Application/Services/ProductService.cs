@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Dto.Product;
+using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -20,14 +21,16 @@ namespace Application.Services
             _mapper = mapper;
 
         }
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<GetProductDto> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = _repository.GetAll();
+            return _mapper.Map<IEnumerable<GetProductDto>>(products);
         }
 
-        public Product GetProductById(Guid id)
+        public GetProductDto GetProductById(Guid id)
         {
-            throw new NotImplementedException();
+            var product = _repository.GetById(id);
+            return _mapper.Map<GetProductDto>(product);
         }
         public Product AddNewProduct(Product newProduct)
         {
