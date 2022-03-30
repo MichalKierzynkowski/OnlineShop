@@ -35,7 +35,9 @@ namespace Application.Services
         public CreateProductDto AddNewProduct(CreateProductDto newProduct)
         {
             var product = _mapper.Map<Product>(newProduct);
+
             _repository.Add(product);
+
             return _mapper.Map<CreateProductDto>(product);
         }
         public void UpdateProduct(Guid id, Product product)
