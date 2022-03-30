@@ -8,9 +8,9 @@ namespace Domain.Entities
 {
     public class ProductDetail
     {
-        public Guid Id { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid Id { get; set; }   
         public decimal SellingPrice { get; set; }
+        public ICollection<Product> Products { get;set; }
         protected ProductDetail()
         {
 
