@@ -5,13 +5,13 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace WebApi.Controllers
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ProductRepository:ControllerBase
+    public class ProductController:ControllerBase
     {
 
         private readonly IProductService _productService;
-        public ProductRepository(IProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
