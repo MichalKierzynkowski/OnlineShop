@@ -11,11 +11,11 @@ using Domain.Interfaces;
 
 namespace Application.Services
 {
-    public class CategoryServices:ICategoryServices
+    public class CategoryService:ICategoryService
     {
         private readonly ICategoryRepository _repository;
         private readonly IMapper _mapper;
-        public CategoryServices(ICategoryRepository repository, IMapper mapper)
+        public CategoryService(ICategoryRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

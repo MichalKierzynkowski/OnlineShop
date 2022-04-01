@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface ICategoryServices
+    public interface ICategoryService
     {
         IEnumerable<GetCategoryDto> GetAllCategories();
         GetCategoryDto GetCategoryById(Guid id);
