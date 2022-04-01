@@ -1,4 +1,5 @@
-﻿using Application.Dto.Product;
+﻿using Application.Dto.Category;
+using Application.Dto.Product;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +17,12 @@ namespace Application.Mappings
     {
         cfg.CreateMap<Product, GetProductDto>();
         cfg.CreateMap<CreateProductDto, Product>();
-       
-            
+        cfg.CreateMap<Category, GetCategoryDto>();
+        cfg.CreateMap<CreateCategoryDto, Category>();
         }) .CreateMapper();
        
+
+        
         
   }
 }

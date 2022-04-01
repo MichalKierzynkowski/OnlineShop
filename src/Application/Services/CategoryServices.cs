@@ -34,7 +34,11 @@ namespace Application.Services
         }
         public Guid AddNewCategory(CreateCategoryDto newCategory)
         {
-            throw new NotImplementedException();
+            var category = _mapper.Map<Category>(newCategory);
+
+            _repository.Add(category);
+
+            return category.Id;
         }
 
         public void DeleteCategory(Guid id)
