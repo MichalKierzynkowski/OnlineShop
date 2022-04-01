@@ -23,7 +23,6 @@ namespace WebApi.Controllers
 
     [HttpGet("{id}")]
     [SwaggerOperation(Summary = "Retrieves one category")]
-
     public IActionResult GetById(Guid id)
     {
       var category = _categoryService.GetCategoryById(id);
