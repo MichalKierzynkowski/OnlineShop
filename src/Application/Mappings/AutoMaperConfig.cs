@@ -14,7 +14,12 @@ namespace Application.Mappings
 
     public static IMapper Initialize() => new MapperConfiguration(cfg =>
     {
-      cfg.CreateMap<Product, GetProductDto>();
-    }).CreateMapper();
+        cfg.CreateMap<Product, GetProductDto>();
+        cfg.CreateMap<CreateProductDto, Product>();
+       
+            
+        }) .CreateMapper();
+       
+        
   }
 }
