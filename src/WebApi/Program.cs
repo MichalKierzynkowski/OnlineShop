@@ -3,6 +3,8 @@ using Application.Services;
 using Infrastructure;
 using Microsoft.OpenApi.Models;
 using Application;
+using Domain.Interfaces;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.RegisterTestInfrastructure();
 builder.Services.RegisterApplication();
-
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSwaggerGen(c =>
 {
   c.EnableAnnotations();

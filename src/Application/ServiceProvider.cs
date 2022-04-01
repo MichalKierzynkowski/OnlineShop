@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Mappings;
 using Application.Services;
 using Domain.Factories;
+using Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -15,6 +16,8 @@ namespace Application
             services.AddTransient<IProductFactory, ProductFactory>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService,CategoryService>();
+           
+            
         }
     }
 }
