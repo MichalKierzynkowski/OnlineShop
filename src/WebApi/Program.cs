@@ -1,8 +1,8 @@
 using Application.Interfaces;
 using Application.Services;
-using Application.Mappings;
 using Infrastructure;
 using Microsoft.OpenApi.Models;
+using Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +17,12 @@ builder.Services.RegisterTestInfrastructure();
 
 builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.RegisterAutomapper();
+builder.Services.RegisterApplication();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.EnableAnnotations();
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShopOnline Api", Version = "v1.0" });
+  c.EnableAnnotations();
+  c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShopOnline Api", Version = "v1.0" });
 });
 
 var app = builder.Build();
@@ -30,8 +30,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1.0"));
+  app.UseSwagger();
+  app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1.0"));
 }
 
 app.UseAuthorization();
