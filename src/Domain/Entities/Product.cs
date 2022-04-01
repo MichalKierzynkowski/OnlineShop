@@ -14,6 +14,7 @@
     public Product(string name)
     {
       Name = name;
+      Id= Guid.NewGuid();
     }
 
   }
