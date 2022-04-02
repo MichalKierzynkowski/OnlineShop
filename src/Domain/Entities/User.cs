@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-   public class User
+    public class User
     {
         public Guid Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public Customer Customer { get; set; }
+        public string Login { get; private set; }
+        public string Password { get; private set; }
+
         protected User()
         {
-            
+            this.Id = Guid.NewGuid();
         }
 
-        public User(string login, string password)
+        public User(string login, string password) : this()
         {
-            Login=login;
-            Password=password;
+            Login = login;
+            Password = password;
         }
     }
 }
