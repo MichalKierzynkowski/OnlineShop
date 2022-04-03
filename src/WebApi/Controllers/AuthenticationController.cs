@@ -1,6 +1,5 @@
 ﻿using Application.Authentication;
 using Application.Authentication.Jwt;
-using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,20 +7,20 @@ namespace WebApi.Controllers;
 
 public class AuthenticationController : BaseApiController
 {
-    private readonly JwtFactory jwtFactory;
+    private readonly IJwtService _jwtService;
 
-    public AuthenticationController(JwtFactory jwtFactory)
+    public AuthenticationController(IJwtService jwtService)
     {
-        this.jwtFactory = jwtFactory;
+        _jwtService = jwtService;
     }
     
     [HttpPost]
     public IActionResult Login(LoginRequest loginRequest)
     {
-        var user = new User(loginRequest.Username, loginRequest.Password);
-        string token = "Bearer " + jwtFactory.CreateAccessToken(user);
-        
-        return Ok(token);
+        var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
+        var bearerToken = "Bearer" + token.Token;
+
+        return Ok(bearerToken);
     }
 
     [HttpGet]
