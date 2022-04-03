@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Net;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Xunit;
 
 namespace WebApi.Tests.Integration.AuthenticationTests;
@@ -14,8 +16,17 @@ public class CreateTokenTests
     }
 
     [Fact]
-    public void Services_Null_SoFar()
+    public async Task Services_Null_SoFar()
     {
-        _httpFixture.Services.Should().BeNull();
+        // _httpFixture.Services.Should().BeNull();
+        var client = _httpFixture.Client;
+
+        var response = await client.GetAsync("api/Authentication/not-secret");
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        
+        var response2 = await client.GetAsync("api/Authentication/secret");
+
+        response2.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 }
