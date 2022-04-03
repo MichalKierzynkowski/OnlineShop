@@ -1,5 +1,8 @@
 ﻿using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Application.Authentication;
 using FluentAssertions;
 using Xunit;
 
@@ -8,25 +11,28 @@ namespace WebApi.Tests.Integration.AuthenticationTests;
 [Collection("HTTP Fixture")]
 public class CreateTokenTests
 {
-    private readonly HttpFixture _httpFixture;
+    private readonly HttpClient _client;
 
     public CreateTokenTests(HttpFixture httpFixture)
     {
-        _httpFixture = httpFixture;
+        _client = httpFixture.Client;
     }
 
     [Fact]
-    public async Task Services_Null_SoFar()
+    public async Task LoginSuccess_TokenNotNullNorEmpty()
     {
-        // _httpFixture.Services.Should().BeNull();
-        var client = _httpFixture.Client;
-
-        var response = await client.GetAsync("api/Authentication/not-secret");
-
-        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var loginRequest = new LoginRequest()
+        {
+            Username = "username",
+            Password = "password"
+        };
         
-        var response2 = await client.GetAsync("api/Authentication/secret");
-
-        response2.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+        var c = JsonContent.Create(loginRequest);
+        
+        var response = await _client.PostAsync("api/authentication", c);
+        var token = await response.Content.ReadAsStringAsync();
+        
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        token.Should().NotBeNullOrWhiteSpace();
     }
 }
