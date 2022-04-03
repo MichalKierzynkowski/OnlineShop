@@ -27,9 +27,9 @@ public class CreateTokenTests
             Password = "password"
         };
         
-        var c = JsonContent.Create(loginRequest);
+        var content = JsonContent.Create(loginRequest);
         
-        var response = await _client.PostAsync("api/authentication", c);
+        var response = await _client.PostAsync("api/authentication", content);
         var token = await response.Content.ReadAsStringAsync();
         
         response.StatusCode.Should().Be(HttpStatusCode.OK);
