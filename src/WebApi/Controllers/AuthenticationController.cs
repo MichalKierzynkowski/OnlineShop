@@ -1,4 +1,5 @@
 ﻿using Application.Authentication;
+using Application.Authentication.Jwt;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

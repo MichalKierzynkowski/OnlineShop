@@ -1,4 +1,5 @@
 ﻿using Application.Authentication;
+using Application.Authentication.Jwt;
 using Domain.Entities;
 using FluentAssertions;
 using Xunit;
@@ -19,7 +20,7 @@ public class JwtFactoryTests
     {
         var user = new User("user", "qwerty");
 
-        string token = this._factory.CreateAccessToken(user);
+        string token = _factory.CreateAccessToken(user).Token;
         
         token.Should().NotBeNullOrWhiteSpace();
     }

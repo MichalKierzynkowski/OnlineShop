@@ -28,7 +28,7 @@ public class Startup
         services.AddSwaggerGen();
         services.RegisterTestInfrastructure();
         services.RegisterApplication();
-        services.AddJwt();
+        services.AddWebJwt();
 
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddSwaggerGen(c =>

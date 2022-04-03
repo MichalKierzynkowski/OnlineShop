@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Application.Authentication;
+using Application.Authentication.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -7,9 +8,9 @@ namespace WebApi.Authentication;
 
 public static class UseJwt
 {
-    public static void AddJwt(this IServiceCollection services)
+    public static void AddWebJwt(this IServiceCollection services)
     {
-        services.AddTransient<JwtFactory>();
+        services.AddJwt();
         
         services.AddAuthentication(options =>
         {

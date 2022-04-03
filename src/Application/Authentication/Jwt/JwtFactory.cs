@@ -4,17 +4,18 @@ using System.Text;
 using Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Application.Authentication;
+namespace Application.Authentication.Jwt;
 
 public class JwtFactory
 {
     // todo: introduce jwt settings
-    public string CreateAccessToken(User user)
+    public JwtToken CreateAccessToken(User user)
     {
         var now = DateTime.UtcNow;
+        var validTo = DateTime.UtcNow.AddMinutes(15); // todo: take from settings
         
-        var notBefore = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-        var expiration = new DateTimeOffset(DateTime.UtcNow.AddMinutes(15)).ToUnixTimeSeconds().ToString();
+        var notBefore = new DateTimeOffset(now).ToUnixTimeSeconds().ToString();
+        var expiration = new DateTimeOffset(validTo).ToUnixTimeSeconds().ToString();
 
         var claims = new Claim[]
         {
@@ -27,7 +28,7 @@ public class JwtFactory
             new Claim(nameof(JwtEnum.UserId), user.Id.ToString()),
         };
         
-        var jwtKey = Encoding.UTF8.GetBytes("SuperDuperLongPasswordlalalalala");
+        var jwtKey = Encoding.UTF8.GetBytes("SuperDuperLongPasswordlalalalala"); // todo: take from settings
         var symmetricSecurityKey = new SymmetricSecurityKey(jwtKey);
         var jwtSecurityAlgorithm = SecurityAlgorithms.HmacSha256;
         var signingCredentials = new SigningCredentials(symmetricSecurityKey, jwtSecurityAlgorithm);
@@ -38,6 +39,6 @@ public class JwtFactory
         
         var token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-        return token;
+        return new JwtToken(token, validTo);
     }
 }
