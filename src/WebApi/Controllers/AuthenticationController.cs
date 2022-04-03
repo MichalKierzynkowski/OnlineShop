@@ -37,4 +37,11 @@ public class AuthenticationController : BaseApiController
     {
         return Ok("You can see this message");
     }
+    
+    [HttpDelete]
+    public IActionResult Logout()
+    {
+        // todo: add logout method
+        return NoContent();
+    }
 }
