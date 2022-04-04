@@ -72,6 +72,8 @@ public class Startup
         }
         app.UseRouting();
 
+        app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+        
         app.UseAuthentication();
         app.UseAuthorization();
         

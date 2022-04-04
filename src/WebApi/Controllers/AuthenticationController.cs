@@ -28,14 +28,14 @@ public class AuthenticationController : BaseApiController
     [Route("secret")]
     public IActionResult Secret()
     {
-        return Ok("Secret message");
+        return Ok("{text: Secret message}");
     }
     
     [HttpGet]
     [Route("not-secret")]
     public IActionResult NotSecret()
     {
-        return Ok("You can see this message");
+        return Ok("{text: You can see this message}");
     }
     
     [HttpDelete]
