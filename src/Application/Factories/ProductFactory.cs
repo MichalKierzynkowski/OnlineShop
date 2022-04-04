@@ -7,7 +7,10 @@ namespace Application.Factories
   {
     public Product Create(ProductDetail details, Category category, string name)
     {
-      throw new NotImplementedException();
+            Product product = new Product(name,details,category);
+            
+            return product;
+
     }
   }
 }
