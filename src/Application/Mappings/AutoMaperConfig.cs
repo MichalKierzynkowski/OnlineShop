@@ -18,8 +18,8 @@ namespace Application.Mappings
         cfg.CreateMap<Product, GetProductDto>();
 
         cfg.CreateMap<CreateProductDto, Product>()
-        .ForMember(x=>x.ProductDetail,opt=>opt.Ignore())
-        .ForMember(x=>x.Category,opt=>opt.Ignore())
+        .ForMember(x=>x.ProductDetailId,opt=>opt.Ignore())
+        .ForMember(x=>x.CategoryId,opt=>opt.Ignore())
         .ForMember(x => x.Id, opt => opt.Ignore());
 
         cfg.CreateMap<Category, GetCategoryDto>();

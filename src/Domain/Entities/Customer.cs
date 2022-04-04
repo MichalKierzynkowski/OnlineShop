@@ -11,9 +11,10 @@ namespace Domain.Entities
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
+        public Guid CustomerDetail { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public CustomerDetail CustomerDetail { get; set; }
+      
         public User User { get; set; }
 
         protected Customer()
@@ -21,11 +22,13 @@ namespace Domain.Entities
 
         }
 
-        public Customer(string name,string surname)
+        public Customer(string name,string surname,Guid CustomerDetail,Guid UserId)
         {
             Id= Guid.NewGuid();
             Name= name;
             Surname= surname;
+            UserId= UserId;
+            CustomerDetail= CustomerDetail;
         }
     }
 }
