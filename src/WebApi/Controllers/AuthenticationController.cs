@@ -13,7 +13,7 @@ public class AuthenticationController : BaseApiController
     {
         _jwtService = jwtService;
     }
-    
+
     [HttpPost]
     public IActionResult Login(LoginRequest loginRequest)
     {
@@ -28,20 +28,25 @@ public class AuthenticationController : BaseApiController
     [Route("secret")]
     public IActionResult Secret()
     {
-        return Ok("{text: Secret message}");
+        return Ok(new TestMessage() {Text = "Secret Message"});
     }
-    
+
     [HttpGet]
     [Route("not-secret")]
     public IActionResult NotSecret()
     {
-        return Ok("{text: You can see this message}");
+        return Ok(new TestMessage() {Text = " You can see this message"});
     }
-    
+
     [HttpDelete]
     public IActionResult Logout()
     {
         // todo: add logout method
         return NoContent();
+    }
+
+    public class TestMessage
+    {
+        public string Text { get; set; }
     }
 }
