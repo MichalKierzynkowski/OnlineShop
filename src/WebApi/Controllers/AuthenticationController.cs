@@ -18,9 +18,9 @@ public class AuthenticationController : BaseApiController
     public IActionResult Login(LoginRequest loginRequest)
     {
         var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
-        var bearerToken = token.Token;
+        var tokenDto = new Token(token.Token);
 
-        return Ok(bearerToken);
+        return Ok(tokenDto);
     }
 
     [HttpGet]
@@ -45,8 +45,22 @@ public class AuthenticationController : BaseApiController
         return NoContent();
     }
 
+    // todo: remove some time
     public class TestMessage
     {
         public string Text { get; set; }
+    }
+
+    // todo: move and refactor
+    public class Token
+    {
+        public string Value { get; set; }
+        public string SwaggerValue { get; set; }
+
+        public Token(string token)
+        {
+            Value = token;
+            SwaggerValue = "Bearer " + token;
+        }
     }
 }
