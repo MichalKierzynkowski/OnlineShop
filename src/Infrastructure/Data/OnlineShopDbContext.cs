@@ -22,7 +22,7 @@ namespace Infrastructure.Data
         public DbSet<ProductDetail> ProductDetails { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+            DataSeed.ModelBuilderExtensions.Seed(modelBuilder);
         }
     }
 }
