@@ -12,10 +12,10 @@
         {
         }
 
-        public Product(string name, Guid productDetailId,Guid categoryId)
+        public Product(string name, Guid productDetailId,Guid categoryId,Guid id)
         {
             Name = name;
-            Id = Guid.NewGuid();
+            Id = id;
             ProductDetailId = productDetailId;
             CategoryId = categoryId;
         }
