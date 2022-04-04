@@ -18,7 +18,7 @@ public class AuthenticationController : BaseApiController
     public IActionResult Login(LoginRequest loginRequest)
     {
         var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
-        var bearerToken = "Bearer" + token.Token;
+        var bearerToken = token.Token;
 
         return Ok(bearerToken);
     }
