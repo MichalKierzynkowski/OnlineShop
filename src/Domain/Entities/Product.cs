@@ -3,20 +3,21 @@
     public class Product
     {
         public Guid Id { get; set; }
+        public Guid  CategoryId { get; set; }
+        public Guid ProductDetailId { get; set; }
         public string Name { get; set; }
-        public ProductDetail ProductDetail { get; set; }
-        public Category Category { get; set; }
+     
 
         public Product()
         {
         }
 
-        public Product(string name, ProductDetail productDetail, Category category)
+        public Product(string name, Guid productDetailId,Guid categoryId)
         {
             Name = name;
             Id = Guid.NewGuid();
-            ProductDetail = productDetail;
-            Category = category;
+            ProductDetailId = productDetailId;
+            CategoryId = categoryId;
         }
     }
 }
