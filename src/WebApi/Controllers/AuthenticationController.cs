@@ -13,14 +13,14 @@ public class AuthenticationController : BaseApiController
     {
         _jwtService = jwtService;
     }
-    
+
     [HttpPost]
     public IActionResult Login(LoginRequest loginRequest)
     {
         var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
-        var bearerToken = token.Token;
+        var tokenDto = new Token(token.Token);
 
-        return Ok(bearerToken);
+        return Ok(tokenDto);
     }
 
     [HttpGet]
@@ -28,20 +28,39 @@ public class AuthenticationController : BaseApiController
     [Route("secret")]
     public IActionResult Secret()
     {
-        return Ok("Secret message");
+        return Ok(new TestMessage() {Text = "Secret Message"});
     }
-    
+
     [HttpGet]
     [Route("not-secret")]
     public IActionResult NotSecret()
     {
-        return Ok("You can see this message");
+        return Ok(new TestMessage() {Text = " You can see this message"});
     }
-    
+
     [HttpDelete]
     public IActionResult Logout()
     {
         // todo: add logout method
         return NoContent();
+    }
+
+    // todo: remove some time
+    public class TestMessage
+    {
+        public string Text { get; set; }
+    }
+
+    // todo: move and refactor
+    public class Token
+    {
+        public string Value { get; set; }
+        public string SwaggerValue { get; set; }
+
+        public Token(string token)
+        {
+            Value = token;
+            SwaggerValue = "Bearer " + token;
+        }
     }
 }
