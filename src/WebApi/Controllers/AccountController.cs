@@ -13,6 +13,13 @@ public class AccountController : BaseApiController
     {
         _userService = userService;
     }
+
+    [HttpGet]
+    [SwaggerOperation(Summary = "Get all accounts - dev use only")]
+    public IActionResult Get()
+    {
+        return Ok(_userService.Get());
+    }
     
     [HttpPost]
     [SwaggerOperation(Summary = "Create new account")]

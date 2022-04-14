@@ -28,4 +28,9 @@ public class UserService : IUserService
 
         return user.Id;
     }
+
+    public IEnumerable<UserDto> Get()
+    {
+        return _userRepository.Get().ToList().Select(x => UserDto.FromUser(x));
+    }
 }
