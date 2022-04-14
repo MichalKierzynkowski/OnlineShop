@@ -45,6 +45,8 @@ public class GenericRepository<TKey, TEntity> : IRepository<TKey, TEntity> where
 
     private DbSet<TEntity> GetDbSet()
     {
-        return _context.Set<TEntity>();
+        var dbSet = _context.Set<TEntity>();
+        _context.Database.EnsureCreated();
+        return dbSet;
     }
 }
