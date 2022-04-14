@@ -1,6 +1,8 @@
-﻿using Application.Authentication;
+﻿using System.Net;
+using Application.Authentication;
 using Application.Authentication.Jwt;
 using Application.Dto.Authentication;
+using Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -20,10 +22,17 @@ public class AuthenticationController : BaseApiController
     [SwaggerOperation(Summary = "Log in and obtain access token")]
     public IActionResult Login(LoginRequest loginRequest)
     {
-        var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
-        JwtTokenDto tokenDto = new JwtSwaggerTokenDto(token.Token);
+        try
+        {
+            var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
+            JwtTokenDto tokenDto = new JwtSwaggerTokenDto(token.Token);
 
-        return Ok(tokenDto);
+            return Ok(tokenDto);
+        }
+        catch (AuthenticationException exception)
+        {
+            return Unauthorized(exception.Message);
+        }
     }
 
     [HttpGet]
