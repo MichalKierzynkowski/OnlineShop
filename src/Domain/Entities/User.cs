@@ -12,13 +12,11 @@ namespace Domain.Entities
         public string Login { get; private set; }
         public string Password { get; private set; }
 
-        protected User()
-        {
-            this.Id = Guid.NewGuid();
-        }
+        protected User() { }
 
         public User(string login, string password) : this()
         {
+            Id = Guid.NewGuid();
             Login = login;
             Password = password;
         }
