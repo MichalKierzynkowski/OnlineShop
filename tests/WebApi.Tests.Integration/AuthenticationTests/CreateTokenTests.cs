@@ -25,8 +25,8 @@ public class CreateTokenTests
     {
         var loginRequest = new LoginRequest()
         {
-            Username = "username",
-            Password = "password"
+            Username = "Ziutek",
+            Password = "dupa1234"
         };
         
         var content = JsonContent.Create(loginRequest);

@@ -27,7 +27,7 @@ public class Startup
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.RegisterTestInfrastructure();
-        services.RegisterApplication();
+        services.AddApplication();
         services.AddWebJwt();
 
         services.AddScoped<ICategoryRepository, CategoryRepository>();

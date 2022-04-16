@@ -1,7 +1,11 @@
-﻿using Application.Authentication;
+﻿using System.Net;
+using Application.Authentication;
 using Application.Authentication.Jwt;
+using Application.Dto.Authentication;
+using Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace WebApi.Controllers;
 
@@ -15,16 +19,25 @@ public class AuthenticationController : BaseApiController
     }
 
     [HttpPost]
+    [SwaggerOperation(Summary = "Log in and obtain access token")]
     public IActionResult Login(LoginRequest loginRequest)
     {
-        var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
-        var tokenDto = new Token(token.Token);
+        try
+        {
+            var token = _jwtService.Login(loginRequest.Username, loginRequest.Password);
+            JwtTokenDto tokenDto = new JwtSwaggerTokenDto(token.Token);
 
-        return Ok(tokenDto);
+            return Ok(tokenDto);
+        }
+        catch (AuthenticationException exception)
+        {
+            return Unauthorized(exception.Message);
+        }
     }
 
     [HttpGet]
     [Authorize]
+    [SwaggerOperation(Summary = "Get sample restricted message")]
     [Route("secret")]
     public IActionResult Secret()
     {
@@ -33,34 +46,22 @@ public class AuthenticationController : BaseApiController
 
     [HttpGet]
     [Route("not-secret")]
+    [SwaggerOperation(Summary = "Get sample not restricted message")]
     public IActionResult NotSecret()
     {
         return Ok(new TestMessage() {Text = " You can see this message"});
     }
 
     [HttpDelete]
+    [SwaggerOperation(Summary = "Logout")]
     public IActionResult Logout()
     {
         // todo: add logout method
         return NoContent();
     }
 
-    // todo: remove some time
     public class TestMessage
     {
         public string Text { get; set; }
-    }
-
-    // todo: move and refactor
-    public class Token
-    {
-        public string Value { get; set; }
-        public string SwaggerValue { get; set; }
-
-        public Token(string token)
-        {
-            Value = token;
-            SwaggerValue = "Bearer " + token;
-        }
     }
 }

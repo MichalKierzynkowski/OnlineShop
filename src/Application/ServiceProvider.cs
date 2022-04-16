@@ -10,14 +10,13 @@ namespace Application
 {
     public static class ServiceProvider
     {
-        public static void RegisterApplication(this IServiceCollection services)
+        public static void AddApplication(this IServiceCollection services)
         {
             services.RegisterAutomapper();
             services.AddTransient<IProductFactory, ProductFactory>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService,CategoryService>();
-           
-            
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

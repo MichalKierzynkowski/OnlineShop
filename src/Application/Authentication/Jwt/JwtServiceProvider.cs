@@ -10,5 +10,6 @@ public static class JwtServiceProvider
         services.AddTransient<IJwtService, JwtService>();
 
         services.AddTransient<ILoginService, LoginService>();
+        services.AddTransient<IHashingService, HashingService>();
     }
 }
