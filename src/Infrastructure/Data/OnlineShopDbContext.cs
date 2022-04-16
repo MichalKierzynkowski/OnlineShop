@@ -22,9 +22,9 @@ namespace Infrastructure.Data
 
         private IEnumerable<User> GetSampleUsers()
         {
-            yield return new User("Mietek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F"); // dupa1234
-            yield return new User("Staszek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F"); // dupa1234
-            yield return new User("Ziutek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F"); // dupa1234
+            yield return new User("Mietek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F".ToLower()); // dupa1234
+            yield return new User("Staszek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F".ToLower()); // dupa1234
+            yield return new User("Ziutek", "4C0ED5344CA916660508BEC6946534CE55EF71E874F613276015839C6E84CE3F".ToLower()); // dupa1234
         }
     }
 }

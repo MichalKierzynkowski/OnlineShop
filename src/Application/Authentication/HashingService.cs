@@ -10,8 +10,8 @@ public class HashingService : IHashingService
         using SHA256 sha256 = SHA256.Create();
 
         var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(value));
-
-        string hash = Encoding.UTF8.GetString(bytes);
+        var stringParts = bytes.Select(x => x.ToString("x2"));
+        var hash = String.Join("", stringParts);
 
         return hash;
     }
