@@ -1,9 +1,7 @@
 using Serilog;
-using Serilog.Events;
 using WebApi;
 
 Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .CreateBootstrapLogger();
 
 try
