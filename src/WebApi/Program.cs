@@ -1,8 +1,9 @@
 using Serilog;
+using Serilog.Events;
 using WebApi;
 
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .CreateBootstrapLogger();
 
 try
@@ -12,11 +13,12 @@ try
         .UseSerilog((context, services, configuration) => configuration
             .ReadFrom.Configuration(context.Configuration)
             .ReadFrom.Services(services)
-            .Enrich.FromLogContext()
-            .WriteTo.Console())
+            .Enrich.FromLogContext())
         .ConfigureWebHostDefaults(builder => builder.UseStartup<Startup>())
         .Build()
         .Run();
+
+    return 0;
 }
 catch (Exception e)
 {
