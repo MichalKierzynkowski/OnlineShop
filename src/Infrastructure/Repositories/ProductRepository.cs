@@ -11,6 +11,7 @@ namespace Infrastructure.Repositories
         public ProductRepository(OnlineShopDbContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();
         }
         public IQueryable<Product> GetAll()
         {
