@@ -11,25 +11,26 @@ namespace Infrastructure.Repositories
         public ProductRepository(OnlineShopDbContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();
         }
         public IQueryable<Product> GetAll()
         {
-             return _context.Products;
+            return _context.Products;
         }
 
         public Product GetById(Guid id)
         {
-           return _context.Products.SingleOrDefault(p => p.Id == id);
+            return _context.Products.SingleOrDefault(p => p.Id == id);
         }
 
         public Product Add(Product product)
         {
-           _context.Products.Add(product);
+            _context.Products.Add(product);
             _context.SaveChanges();
             return product;
         }
 
-      
+
         public void Update(Product product)
         {
             _context.Products.Update(product);

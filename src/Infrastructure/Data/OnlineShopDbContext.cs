@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class OnlineShopDbContext:DbContext
+    public class OnlineShopDbContext : DbContext
     {
-        public OnlineShopDbContext(DbContextOptions options):base(options)
+        public OnlineShopDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -18,6 +18,7 @@ namespace Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(GetSampleUsers());
+            DataSeed.ModelBuilderExtensions.Seed(modelBuilder);
         }
 
         private IEnumerable<User> GetSampleUsers()
