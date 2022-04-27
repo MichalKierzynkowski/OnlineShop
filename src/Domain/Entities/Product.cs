@@ -9,7 +9,7 @@
       
        
 
-        protected Product()
+        public Product()
         {
         }
 
